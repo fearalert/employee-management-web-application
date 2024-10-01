@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const employeeRoute = require('./routes/employee');
-const Employee = require('./models/Employee'); // Ensure the path is correct
+const Employee = require('./models/Employee');
+
+require('dotenv').config();
 
 const app = express();
 
@@ -38,12 +40,20 @@ const addSampleEmployees = async () => {
     }
 };
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/employee_management';
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
-    console.log('Connected to MongoDB');
-    return addSampleEmployees();
-})
-.catch(err => console.error("Error connecting to MongoDB: ", err));
+const connectWithRetry = () => {
+    console.log('Mongo URI:', process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log('Connected to MongoDB');
+      addSampleEmployees();
+    })
+    .catch(err => {
+      console.error('Error connecting to MongoDB:', err);
+      setTimeout(connectWithRetry, 5000);
+    });
+  };
+  
+  connectWithRetry();
 
 app.use('/employees', employeeRoute);
 

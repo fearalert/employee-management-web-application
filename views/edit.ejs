@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Edit Employee</title>
+</head>
+<body>
+    <div class="container center-content">
+    <h1>Edit Employee</h1>
+    <form action="/employees/<%= employee.id %>?_method=PUT" method="POST">
+        <input type="text" name="firstName" value="<%= employee.firstName %>" required />
+        <input type="text" name="lastName" value="<%= employee.lastName %>" required />
+        <select name="department" required>
+            <option value="">Select Department</option>
+            <option value="General Dentistry" <%= employee.department === "General Dentistry" ? 'selected' : '' %>>General Dentistry</option>
+            <option value="Pediatric Dentistry" <%= employee.department === "Pediatric Dentistry" ? 'selected' : '' %>>Pediatric Dentistry</option>
+            <option value="Restorative Dentistry" <%= employee.department === "Restorative Dentistry" ? 'selected' : '' %>>Restorative Dentistry</option>
+            <option value="Surgery" <%= employee.department === "Surgery" ? 'selected' : '' %>>Surgery</option>
+            <option value="Orthodontics" <%= employee.department === "Orthodontics" ? 'selected' : '' %>>Orthodontics</option>
+        </select>
+        <div class="button-row">
+            <button type="submit">Save</button>
+            <a href="/employees" class="button-red">Cancel</a>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

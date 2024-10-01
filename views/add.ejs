@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Add Employee</title>
+</head>
+<body>
+    <div class="container center-content">
+        <h1>Add New Employee</h1>
+        <form action="/employees" method="POST">
+            <input type="text" name="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+            <select name="department" required>
+                <option value="">Select Department</option>
+                <option value="General Dentistry">General Dentistry</option>
+                <option value="Pediatric Dentistry">Pediatric Dentistry</option>
+                <option value="Restorative Dentistry">Restorative Dentistry</option>
+                <option value="Surgery">Surgery</option>
+                <option value="Orthodontics">Orthodontics</option>
+            </select>
+            <button type="submit">Add Employee</button>
+        </form>
+    </div>
+</body>
+</html>

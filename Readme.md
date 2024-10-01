@@ -1,6 +1,6 @@
 # Employment Management CRUD App using Node.js, Express.js, HTMl, and CSS
 
-This is an Employee Management System built using the MERN stack (MongoDB, Express, React, Node.js). This project is dockerized to simplify the setup and running process.
+This is an Employee Management System built using the MongoDB, Express, HTML, CSS, and Node.js. This project is dockerized to simplify the setup and running process.
 
 ## Folder Structure
 

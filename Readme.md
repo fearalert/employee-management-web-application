@@ -63,8 +63,8 @@ Run the following command to start the application using Docker Compose:
 
 ```bash
 docker-compose up --build
-The --build flag ensures that the containers are built from the latest version of your code.
 ```
+The `--build` flag ensures that the containers are built from the latest version of your code.
 
 ### 4. Access the Application
 

@@ -40,20 +40,20 @@ const addSampleEmployees = async () => {
     }
 };
 
-const connectWithRetry = () => {
-    console.log('Mongo URI:', process.env.MONGO_URI);
+const connectDatabase = () => {
     mongoose.connect(process.env.MONGO_URI)
     .then(() => {
+    console.log('Mongo URI:', process.env.MONGO_URI);
       console.log('Connected to MongoDB');
       addSampleEmployees();
     })
     .catch(err => {
       console.error('Error connecting to MongoDB:', err);
-      setTimeout(connectWithRetry, 5000);
+      setTimeout(connectDatabase, 5000);
     });
   };
   
-  connectWithRetry();
+  connectDatabase();
 
 app.use('/employees', employeeRoute);
 
